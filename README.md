@@ -12,4 +12,4 @@ Reporitory chứa các bản build easyweb để triển khai push-to-deploy
     - current VPS: Singapore: Centos 7.2 x64: 512M RAM: 128.199.210.69
 
 ### ....
-test push
+
