@@ -15,8 +15,10 @@ Reporitory chứa các bản build easyweb để triển khai push-to-deploy
 ### api.easywebhub.com
 - Production
     - branch api.easyadmincp.com
-    - hosting: win 2012 : 2GB : 104.140.14.140
+    - hosting: win 2012 4GB RAM: 107.175.56.236
   - Demo
     - branch demo.api.easyadmincp.com
     - hosting: win 2012 : 2GB : 104.140.14.140
+    
+
 
