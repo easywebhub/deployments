@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", 'aurelia-framework', '../../services/WebSite/WebSiteServices', 'aurelia-dialog', './CreateWebDlg', '../../models//website'], function (require, exports, aurelia_framework_1, WebSiteServices_1, aurelia_dialog_1, CreateWebDlg_1, website_1) {
+define(["require", "exports", 'aurelia-framework', '../../services/WebSite/WebSiteServices', 'aurelia-dialog', './CreateWebDlg', './RoleWebDlg', '../../models//website'], function (require, exports, aurelia_framework_1, WebSiteServices_1, aurelia_dialog_1, CreateWebDlg_1, RoleWebDlg_1, website_1) {
     "use strict";
     var WebSiteMng = (function () {
         function WebSiteMng(webSiteServices, bindingEngine, dialogService) {
@@ -21,9 +21,35 @@ define(["require", "exports", 'aurelia-framework', '../../services/WebSite/WebSi
         WebSiteMng.prototype.activate = function () {
             var _this = this;
             return Promise.all([this.webSiteServices.GetListWebSite()]).then(function (rs) {
-                _this.listWebSite = rs[0].Data;
-                console.log('listWebSite', _this.listWebSite);
-                _this.total = _this.listWebSite.length;
+                if (rs[0].Result == true) {
+                    _this.listWebSite = rs[0].Data;
+                    _this.total = rs[0].ItemsCount;
+                    console.log('listWebSite', rs[0].Data);
+                }
+                else {
+                    console.log('bad');
+                }
+            });
+        };
+        WebSiteMng.prototype.roleWeb = function (item) {
+            var _this = this;
+            this.dialogService.open({ viewModel: RoleWebDlg_1.RoleWebDlg, model: item }).then(function (result) {
+                if (!result.wasCancelled) {
+                    console.log('result output', JSON.stringify(new website_1.CreateRoleWeb(result.output)));
+                    _this.webSiteServices.RoleWeb(new website_1.CreateRoleWeb(result.output)).then(function (rs) {
+                        console.log("rs", rs);
+                        if (rs.Result == true) {
+                            swal({ title: "Thông báo", text: rs.Message, timer: 2500, showConfirmButton: true, type: "success" });
+                            _this.activate();
+                        }
+                        else {
+                            swal({ title: "Thông báo", text: "Tạo mới role web thất bại", timer: 2500, showConfirmButton: true, type: "warning" });
+                        }
+                    });
+                }
+                else {
+                    console.log('bad');
+                }
             });
         };
         WebSiteMng.prototype.createWeb = function () {

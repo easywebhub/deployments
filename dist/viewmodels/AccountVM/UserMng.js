@@ -20,10 +20,14 @@ define(["require", "exports", 'aurelia-framework', '../../services/Account/UserS
         UserMng.prototype.activate = function () {
             var _this = this;
             return Promise.all([this.userServices.GetListUser()]).then(function (rs) {
-                _this.listUser = rs[0].Data;
-                _this.total = _this.listUser.length;
-                console.log('listUser', _this.total);
-                console.log('listUser', _this.listUser[0].Websites);
+                if (rs[0].Result == true) {
+                    _this.listUser = rs[0].Data;
+                    _this.total = rs[0].ItemsCount;
+                    console.log('listUser', rs[0]);
+                }
+                else {
+                    console.log('bad');
+                }
             });
         };
         UserMng = __decorate([

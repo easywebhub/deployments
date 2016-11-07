@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", 'aurelia-router', 'aurelia-dependency-injection', '../../services/Account/LoggingServices', 'lockr'], function (require, exports, aurelia_router_1, aurelia_dependency_injection_1, LoggingServices_1, Lockr) {
+define(["require", "exports", 'aurelia-router', 'aurelia-dependency-injection', '../../services/Account/LoggingServices', 'lockr', 'tinymce'], function (require, exports, aurelia_router_1, aurelia_dependency_injection_1, LoggingServices_1, Lockr) {
     "use strict";
     var LoginViewModel = (function () {
         function LoginViewModel(router, loggingServices) {
@@ -36,6 +36,9 @@ define(["require", "exports", 'aurelia-router', 'aurelia-dependency-injection', 
             $(".ui.form").form(rules, {
                 inline: true,
                 on: 'blur'
+            });
+            tinymce.init({
+                selector: "#mytextarea"
             });
         };
         LoginViewModel.prototype.routeRegister = function () {

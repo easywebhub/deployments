@@ -16,7 +16,7 @@ define(["require", "exports", 'aurelia-framework', 'aurelia-fetch-client', '../.
         WebSiteServices.prototype.GetListWebSite = function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
-                _this.http.fetch("api-user/getlistWebsite", { method: 'get' }).then(function (response) { return response.json(); }).then(function (data) { resolve(data); }).catch(function (err) { return reject(Error(err)); });
+                _this.http.fetch("website/all", { method: 'get' }).then(function (response) { return response.json(); }).then(function (data) { resolve(data); }).catch(function (err) { return reject(Error(err)); });
             });
         };
         WebSiteServices.prototype.CreateWeb = function (meta) {

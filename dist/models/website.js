@@ -10,6 +10,16 @@ define(["require", "exports"], function (require, exports) {
         return CreateWeb;
     }());
     exports.CreateWeb = CreateWeb;
+    var CreateRoleWeb = (function () {
+        function CreateRoleWeb(entity) {
+            this.AccountId = entity.AccountId;
+            this.WebsiteId = entity.WebsiteId;
+            this.WebsiteDisplayName = entity.WebsiteDisplayName;
+            this.AccessLevel = entity.AccessLevel;
+        }
+        return CreateRoleWeb;
+    }());
+    exports.CreateRoleWeb = CreateRoleWeb;
 });
 
 //# sourceMappingURL=website.js.map

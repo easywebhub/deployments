@@ -16,7 +16,7 @@ define(["require", "exports", 'aurelia-framework', '../..//services/HttpService'
         UserServices.prototype.GetListUser = function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
-                _this.http.fetch("api-user/getlistuser", {
+                _this.http.fetch("account/all", {
                     method: 'get'
                 })
                     .then(function (response) { return response.json(); })

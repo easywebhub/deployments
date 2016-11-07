@@ -12,10 +12,15 @@ define(["require", "exports", "aurelia-framework", "jquery"], function (require,
     var SemanticDropdown = (function () {
         function SemanticDropdown(element) {
             this.element = element;
+            this.valueDrop = "";
         }
         SemanticDropdown.prototype.attached = function () {
-            $(this.element).dropdown({});
+            $(this.element).dropdown('set value(value)', this.valueDrop);
         };
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Object)
+        ], SemanticDropdown.prototype, "valueDrop", void 0);
         SemanticDropdown = __decorate([
             aurelia_framework_1.customAttribute("semantic_dropdown"),
             aurelia_framework_1.inject(Element), 
