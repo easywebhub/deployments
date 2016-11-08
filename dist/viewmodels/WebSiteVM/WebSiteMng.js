@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", 'aurelia-framework', '../../services/WebSite/WebSiteServices', 'aurelia-dialog', './CreateWebDlg', './RoleWebDlg', '../../models//website'], function (require, exports, aurelia_framework_1, WebSiteServices_1, aurelia_dialog_1, CreateWebDlg_1, RoleWebDlg_1, website_1) {
+define(["require", "exports", 'aurelia-framework', '../../services/WebSite/WebSiteServices', 'aurelia-dialog', './CreateWebDlg', './DetailWebDlg', './RoleWebDlg', '../../models//website'], function (require, exports, aurelia_framework_1, WebSiteServices_1, aurelia_dialog_1, CreateWebDlg_1, DetailWebDlg_1, RoleWebDlg_1, website_1) {
     "use strict";
     var WebSiteMng = (function () {
         function WebSiteMng(webSiteServices, bindingEngine, dialogService) {
@@ -25,6 +25,16 @@ define(["require", "exports", 'aurelia-framework', '../../services/WebSite/WebSi
                     _this.listWebSite = rs[0].Data;
                     _this.total = rs[0].ItemsCount;
                     console.log('listWebSite', rs[0].Data);
+                }
+                else {
+                    console.log('bad');
+                }
+            });
+        };
+        WebSiteMng.prototype.detailRoleWeb = function (item) {
+            this.dialogService.open({ viewModel: DetailWebDlg_1.DetailWebDlg, model: item }).then(function (result) {
+                if (!result.wasCancelled) {
+                    console.log('result output', JSON.stringify(new website_1.CreateRoleWeb(result.output)));
                 }
                 else {
                     console.log('bad');
