@@ -1,0 +1,12 @@
+<template><style>.img-responsive {
+      margin: 0 auto;
+    }
+  .form-group{
+    margin-right:15px;
+  }
+  .form-group label{
+   margin-right:5px
+  }
+  .height_boottom{
+    margin-top:10px;
+  }</style><section><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Quản lý logging</h3></div><div class="panel-body"><form class="form-inline" role="form"><div class="col-md-12 form-group"><label for="">Có ${total |number } Logging</label></div><div class="form-group"><label for="">Id</label><input type="text" class="form-control" id="" placeholder="Id" value.bind="meta.Id"></div><div class="form-group"><label for="">Tài khoản</label><input type="text" class="form-control" id="" placeholder="Tài khoản" value.bind="meta.Username"></div><div class="form-group"><label for="">Id người dùng</label><input type="text" class="form-control" id="" placeholder="User Id" value.bind="meta.UserId"></div><div class="form-group"><label for="">IP</label><input type="text" class="form-control" id="" placeholder="IP" value.bind="meta.IPAddress"></div><div class="form-group"><label for="">Yêu cầu</label><input type="text" class="form-control" id="" placeholder="yêu cầu" value.bind="meta.Request"></div><div class="form-group"><label for="">Từ ngày</label><input type="date" class="form-control" id="" placeholder="Từ ngày" value.bind="meta.FromDate"></div><div class="form-group"><label for="">Đến ngày</label><input type="date" class="form-control" id="" placeholder="Đến ngày" value.bind="meta.ToDate"></div><div class="form-group" style="margin-top:5px;margin-left:15px"><button type="button" click.delegate="searchBy()" class="btn btn-default" bts_tooltip title="Lọc"><span class="glyphicon glyphicon-filter"></span></button></div></form></div></div><table class="table"><thead><tr><th>#</th><th>Id</th><th>Tài khoản</th><th>Id tài khoản</th><th>IP</th><th>User Agent</th><th>Yêu cầu</th><th>Nội dung</th></tr></thead><tbody><tr repeat.for="item of listLogging"><td>${$index+1}</td><td>${item.log.Id}</td><td>${item.log.Fullname}</td><td>${item.log.UserId}</td><td>${item.log.IPAddress}</td><td>${item.log.UserAgent}</td><td>${item.log.Request}</td><td>${item.log.Content}</td></tr></tbody></table><pagination page-size.bind="pagesize" total.bind="total" item-per-page.bind="itemperpage" current-page.bind="current"></pagination></section></template>

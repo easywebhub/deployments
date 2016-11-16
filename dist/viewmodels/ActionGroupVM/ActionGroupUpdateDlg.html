@@ -1,0 +1,43 @@
+<template><!--<require from="../../resources/templates/validation-summary.html"></require>--><!--<require from="resources/CustomElements/datetime-picker/datetime-picker"></require>--><style>/*fix z index*/
+    
+    .sweet-alert {
+      z-index: 200111;
+    }
+    
+    body > span.select2-container  {
+      z-index: 100111;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+      z-index: 9998 !important;
+    }
+    
+    .edit-form {}
+    
+    ai-dialog-container {
+      margin: 30px auto;
+      z-index: 100005 !important;
+    }
+    
+    ai-dialog,
+    ai-dialog-container>div>div {
+      min-width: 600px;
+      margin: auto;
+      display: block;
+    }
+    
+    ai-dialog>ai-dialog-header {
+      padding: 11px 16px 4px;
+    }
+    
+    ai-dialog>ai-dialog-header>button {
+      display: inline-block;
+      float: none;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+    }</style><ai-dialog class="edit-form"><ai-dialog-header><h3 show.bind="Entity.Id>0">Cập nhật Nhóm hoạt động</h3><h3 show.bind="Entity==undefined">Tạo mới Nhóm hoạt động</h3></ai-dialog-header><ai-dialog-body><form class="form-horizontal" submit.delegate="submit(Entity)"><div class="form-group"><label class="control-label col-sm-3" for="name">Tên</label><div class="col-sm-9"><input type="text" class="form-control" id="name" value.bind="Entity.Name" required></div></div><div class="form-group"><label class="control-label col-sm-3">Tiêu đề</label><div class="col-sm-9"><input type="title" class="form-control" id="title" value.bind="Entity.Title"></div></div><div class="form-group"><label class="control-label col-sm-3">Tên mã</label><div class="col-sm-9"><input type="title" class="form-control" id="title" value.bind="Entity.CodeName"></div></div><div class="form-group"><label class="control-label col-sm-3">Mô tả</label><div class="col-sm-9"><input type="text" class="form-control" id="Group" value.bind="Entity.Description"></div></div><div class="form-group"><label class="control-label col-sm-3">Riêng tư</label><div class="col-sm-1"><input type="checkbox" class="form-control" id="title" value.bind="Entity.IsPrivate"></div></div><div class="form-group"><div class="col-sm-offset-3 col-sm-9"><button type="submit" class="btn btn-primary" style="height:40px;width:60px">Lưu</button> <button class="btn btn-warning" click.delegate="dialogController.cancel()" style="height:40px;width:60px">Thoát</button></div></div></form></ai-dialog-body><ai-dialog-footer></ai-dialog-footer></ai-dialog></template>

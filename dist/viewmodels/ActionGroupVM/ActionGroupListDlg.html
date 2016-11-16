@@ -1,0 +1,43 @@
+<template><!--<require from="resources/templates/validation-summary.html"></require>--><!--<require from="../../resources/templates/validation-summary.html"></require>--><!--<require from="resources/CustomElements/editors/summernote"></require>--><!--<require from="resources/CustomElements/datetime-picker/datetime-picker"></require>--><style>/*fix z index*/
+    
+    .sweet-alert {
+      z-index: 200111;
+    }
+    
+    body > span.select2-container  {
+      z-index: 100111;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+      z-index: 9998 !important;
+    }
+    
+    .edit-form {}
+    
+    ai-dialog-container {
+      margin: 30px auto;
+      z-index: 100005 !important;
+    }
+    
+    ai-dialog,
+    ai-dialog-container>div>div {
+      min-width: 600px;
+      margin: auto;
+      display: block;
+    }
+    
+    ai-dialog>ai-dialog-header {
+      padding: 11px 16px 4px;
+    }
+    
+    ai-dialog>ai-dialog-header>button {
+      display: inline-block;
+      float: none;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+    }</style><ai-dialog class="edit-form" data-backdrop="static"><ai-dialog-header><h2>ActionGroupActionLstSetting</h2><ai-dialog-body><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Điều kiện tìm kiếm</h3></div><div class="panel-body"><form class="form-inline" role="form"><div class="form-group"><label for="">Tên</label><input type="text" class="form-control" id="" placeholder="Tên" ref="searchName"></div></form></div></div><table class="table"><thead><tr><th>#</th><th></th><th>Tên miền</th><th>Tên điều khiển</th><th>Tên mã</th><th>Tên khu vực</th><th>Mô tả</th><th>Ngày bắt đầu</th><th>Ngày kết thúc</th></tr></thead><tbody ref="mydata" items.bind="listActionGroup | searchName : searchName.value"><tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (itemperpage):current * (itemperpage)"><td>${(current-1)*10+$index+1}</td><td><input type="checkbox" checked.bind="item.IsEnable"></td><td>${item.ActionModel.PublicDomainName}</td><td>${item.ActionModel.ControllerName}</td><td>${item.ActionModel.CodeName}</td><td>${item.ActionModel.AreaName}</td><td>${item.ActionModel.Description}</td><td>${item.ActionModel.StartDate}</td><td>${item.ActionModel.EndDate}</td></tr><tr if.bind="mydata.items.length>= 0"><td colspan="13"><pagination page-size.bind="pagesize" total.bind="mydata.items.length" item-per-page.bind="itemperpage" current-page.bind="current"></pagination></td></tr></tbody></table><div class="row"><button type="button" class="btn btn-primary" style="height:40px;width:60px" title="Cập nhật" click.delegate="UpdateActionGroupList()">Lưu</button> <button class="btn btn-warning" click.delegate="dialogController.cancel()" style="height:40px;width:60px">Thoát</button></div></ai-dialog-body></ai-dialog-header></ai-dialog></template>

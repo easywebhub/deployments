@@ -1,0 +1,17 @@
+<template><style>.form-group {
+            height: 75px;
+            margin-right: 20px;
+        }
+        
+        .form-group label {
+            margin-right: 10px;
+        }</style><section><compose view="../../views/entity-header.html"></compose><compose view="../../views/userToolbar.html"></compose><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Điều kiện tìm kiếm</h3></div><div class="panel-body"><form class="form-inline" role="form" submit.delegate="search(obj)"><div class="form-group"><label for="sdt" class="control-label">Số điện thoại</label><input type="text" class="form-control" id="sdt" value.bind="obj.Phone & validate" placeholder="Số điện thoại"></div><!--
+                    <div class="form-group">
+                        <label for="" class="control-label">Loại Giao dịch</label>
+                        <select value.bind="selectData" style="border: 1px solid #ccc;
+    border-radius: 4px;height:34px;width:130px">
+                              <option value="">--- Chọn tất cả ---</option>
+                              <option value="Vmoney">Mua hàng</option>
+                              <option value="Vpoint">Trả hàng</option>
+                        </select>
+                    </div>--><div class="form-group"><label for="">Email</label><input type="text" class="form-control" id="" value.bind="obj.Email & validate" placeholder="Email"></div><div class="form-group"><label class="control-label">Ngày mua hàng từ</label><input datetime-picker="vl.bind:obj.StartDate" value.bind="obj.StartDate & validate" class="form-control"></div><div class="form-group"><label class="control-label">Đến</label><input datetime-picker="vl.bind:obj.EndDate" value.bind="obj.EndDate & validate" class="form-control"></div><div class="form-group"><button type="submit" class="btn btn-default" bts_tooltip title="Tìm kiếm"><span class="glyphicon glyphicon-filter"></span></button></div></form></div></div><div class="splash" if.bind="!pendding"><i class="fa fa-spinner fa-spin"></i></div><table class="table" if.bind="pendding"><thead><tr><th>#</th><th>Ngày mua</th><th>Họ tên</th><th>Số điện thoại</th><th>Email</th><th>Tên sản phẩm</th><th>Tổng tiền (VNĐ)</th><th>TVmoney tích lũy</th><!--<th>Loại giao dịch</th>--><th>Tài khoản</th></tr></thead><tbody><tbody ref="mydata" items.bind="listUsersTransacTion"><tr repeat.for="item of mydata.items | takeFromTo: (current-1)* (itemperpage):current * (itemperpage)"><td>${(current-1)*10+$index+1}</td><td>${item.NgayMuaHang | dateFormat : 'M/D/YYYY hh:mm:ss a'}</td><td>${item.TenKH}</td><td>${item.Phone}</td><td>${item.Email}</td><td>${item.TenSP}</td><td>${item.TongTien}</td><td>${item.VMoneyTichLuy}</td><!--<td></td>--><td></td></tr><tr if.bind="total > 0"><td colspan="13"><pagination page-size.bind="pagesize" total.bind="total" item-per-page.bind="itemperpage" current-page.bind="current"></pagination></td></tr></tbody></tbody><tr if.bind="isNoResultRes()"><td colspan="10" style="text-align:center;padding : 60px 0px 0px 0px"><span>Không tìm thấy giao dịch thỏa điều kiện</span></td></tr></table></section></template>

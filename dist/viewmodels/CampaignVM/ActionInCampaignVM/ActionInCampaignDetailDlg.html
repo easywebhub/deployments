@@ -1,0 +1,42 @@
+<template><style>/*fix z index*/
+     .sweet-alert {
+      z-index: 200111;
+    }
+    
+    body > span.select2-container  {
+      z-index: 100111;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+      z-index: 9998 !important;
+    }
+    
+    .edit-form {}
+    
+    ai-dialog-container {
+      margin: 30px auto;
+      z-index: 100005 !important;
+    }
+    
+    ai-dialog,
+    ai-dialog-container>div>div {
+      min-width: 600px;
+      margin: auto;
+      display: block;
+    }
+    
+    ai-dialog>ai-dialog-header {
+      padding: 11px 16px 4px;
+    }
+    
+    ai-dialog>ai-dialog-header>button {
+      display: inline-block;
+      float: none;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+    }</style><ai-dialog class="edit-form" data-backdrop="static"><ai-dialog-header><h2>Chi tiết hoạt động trong Campaign</h2><h5>Thông tin hoạt động trong Campaign</h5></ai-dialog-header><ai-dialog-body><dl class="dl-horizontal"><dt>Tên mã</dt><dd>${deleteAction.Action.CodeName}</dd><dt>Kiểu</dt><dd>${deleteAction.Campaign.Type}</dd><dt>Trạng thái</dt><dd>${deleteAction.Status}</dd><dt>Mô tả</dt><dd>${deleteAction.Description}</dd><dt>Danh sách quyền</dt><dd>${deleteAction.ListRoles}</dd><dt>MaximumTotalPlayInDay</dt><dd>${deleteAction.MaximumTotalPlayInDay}</dd><dt>MaximumTotalPlayInCampaign</dt><dd>${deleteAction.MaximumTotalPlayInCampaign}</dd></dl></ai-dialog-body><ai-dialog-footer><button class="btn btn-warning btn-xs" click.delegate="dialogController.cancel()" style="height:40px;width:60px">Thoát</button></ai-dialog-footer></ai-dialog></template>

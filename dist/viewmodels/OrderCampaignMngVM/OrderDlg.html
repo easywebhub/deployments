@@ -1,0 +1,30 @@
+<template><style>/*fix z index*/
+    .select2-container {
+            z-index: 100111;
+    } 
+    ai-dialog-overlay.active {
+        background-color: black;
+        opacity: .5;
+        z-index: 9998 !important;
+    }
+    
+    .edit-form {}
+    
+    ai-dialog-container {
+        margin: 30px auto;
+        z-index: 9999 !important;
+    }
+    
+    ai-dialog>ai-dialog-header {
+        padding: 11px 16px 4px;
+    }
+    
+    ai-dialog>ai-dialog-header>button {
+        display: inline-block;
+        float: none;
+    }
+    
+    ai-dialog {
+        max-width: 800px;
+        width: 100%;
+    }</style><ai-dialog class="edit-form"><ai-dialog-header><span>Tạo đơn hàng</span></ai-dialog-header><ai-dialog-body><h4>Thông tin sản phẩm</h4><table class="table table-hover"><thead><tr><th>Tên</th><th>Giá</th><th>Mô tả</th><th>Mã sản phẩm</th><th>Mã chi nhánh</th><th>Mã màu</th><th>Hình ảnh</th></tr></thead><tbody><tr><td>${CampaignGift.Name}</td><td>${CampaignGift.Price | vietNamDong}</td><td>${CampaignGift.Description}</td><td>${CampaignGift.ProductCode}</td><td>${CampaignGift.StoreCode}</td><td>${CampaignGift.ProductColorCode}</td><td><img src.bind="CampaignGift.Image" alt.bind="CampaignGift.Name" height="60px" width="60px"></td></tr></tbody></table><div class="panel panel-info"><div class="panel-heading">Tạo đơn hàng</div><div class="panel-body"><form role="form" submit.delegate="controller.ok({Order:order,CampaignGift:CampaignGift })"><div class="form-group"><label for="">Tên khách hàng</label><input type="text" class="form-control" placeholder="Tên khách hàng" value.bind="order.Fullname" disabled="disabled"></div><div class="form-group"><label for="">Địa chỉ khách hàng</label><input type="text" class="form-control" placeholder="Địa chỉ" value.bind="order.Address" disabled="disabled"></div><div class="form-group"><label for="">SĐT</label><input type="text" class="form-control" placeholder="SĐT" value.bind="order.Phone" disabled="disabled"></div><div class="form-group"><label for="">CMND</label><input type="PersonalId" class="form-control" placeholder="PersonalId" value.bind="order.PersonalId" disabled="disabled"></div><div class="form-group"><label for="">Email</label><input type="Email" class="form-control" placeholder="Email" value.bind="order.Email" disabled="disabled"></div><div class="form-group"><label>Mã xác nhận</label><input type="text" class="form-control" placeholder="Mã xác nhận" value.bind="order.ConfirmCode"></div><div class="form-group"><label>Chi nhánh nhận quà</label><select select2 value.bind="order.StoreCode" style="width: 100%" required><option repeat.for="s of StoreVta" model.bind="s.MACS" disabled.bind="s.MACS!='CS_0000047'">${s.TenCS}</option></select></div><div class="form-group"><label>Ghi chú</label><textarea class="form-control" placeholder="Ghi chú" value.bind="order.Note"></textarea></div><div class="form-group"><button type="submit" class="btn btn-primary">Xác nhận</button> <button class="btn btn-warning" type="reset" click.trigger="controller.cancel()">Hủy bỏ</button></div></form></div></div></ai-dialog-body><ai-dialog-footer></ai-dialog-footer></ai-dialog></template>

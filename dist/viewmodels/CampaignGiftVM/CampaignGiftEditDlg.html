@@ -1,0 +1,43 @@
+<template><style>.sweet-alert {
+      z-index: 200111;
+    }
+    
+    body > span.select2-container  {
+      z-index: 100111;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+      z-index: 9998 !important;
+    }
+    
+    .edit-form {}
+    
+    ai-dialog-container {
+      margin: 30px auto;
+      z-index: 100005 !important;
+    }
+    
+    ai-dialog,
+    ai-dialog-container>div>div {
+      min-width: 600px;
+      margin: auto;
+      display: block;
+    }
+    
+    ai-dialog>ai-dialog-header {
+      padding: 11px 16px 4px;
+    }
+    
+    ai-dialog>ai-dialog-header>button {
+      display: inline-block;
+      float: none;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+    }</style><ai-dialog class="edit-form" data-backdrop="static"><ai-dialog-header><h2>Cập nhật CampaigGift</h2><h4>${editCampaignGit.Name}</h4></ai-dialog-header><ai-dialog-body><form role="form" submit.delegate="submit(editCampaignGift)"><div class="form-group"><label for="exampleInputEmail1">Tên</label><input type="text" class="form-control" id="exampleInputEmail1" placeholder="Tên" value.bind="editCampaignGift.Name & validate"></div><div class="form-group"><label for="exampleInputEmail1">Hình ảnh</label><input type="text" class="form-control" id="exampleInputEmail1" placeholder="Hình ảnh" value.bind="editCampaignGift.Image"></div><div class="form-group"><label for="exampleInputPassword1">Mô tả</label><input type="text" class="form-control" id="exampleInputPassword1" placeholder="Mô tả" value.bind="editCampaignGift.Description"></div><div class="form-group"><label for="exampleInputPassword1">Giá</label><input type="number" class="form-control" id="exampleInputPassword1" placeholder="Giá" value.bind="editCampaignGift.Price"></div><div class="form-group"><label for="exampleInputPassword1">Giá cũ</label><input type="number" class="form-control" id="exampleInputPassword1" placeholder="Giá cũ" value.bind="editCampaignGift.OldPrice"></div><div class="form-group"><label for="exampleInputFile">Liên kết</label><input type="text" class="form-control" id="exampleInputPassword1" placeholder="Liên kết" value.bind="editCampaignGift.Link"></div><div class="form-group"><label for="exampleInputFile">Danh sách quyền</label><input type="text" class="form-control" id="exampleInputPassword1" placeholder="Danh sách quyền" value.bind="editCampaignGift.ListRoles"></div><div class="form-group"><label for="exampleInputPassword1">Loại</label><select value.bind="editCampaignGift.Type" style="width:100%;border: 1px solid #ccc;height:34px;
+    border-radius: 4px"><option repeat.for="item of Types" value.bind="item.text">${item.value}</option></select></div><div class="form-group"><label for="exampleInputPassword1">Lấy giá sản phẩm theo MSP/CN?</label><input type="checkbox"></div><div class="form-group"><label for="">Mã lưu trữ</label><select value.bind="editCampaignGift.StoreCode & validate" style="width:100%;border: 1px solid #ccc;height:34px;
+    border-radius: 4px"><option repeat.for="item of StoreCode" value.bind="item.value">${item.text}</option></select></div><div class="form-group"><label for="exampleInputPassword1">Mã SP</label><input type="number" class="form-control" id="exampleInputPassword1" placeholder="ProductCode" value.bind="editCampaignGift.ProductCode"></div><div class="form-group"><label for="exampleInputPassword1">Mã màu SP</label><input type="number" class="form-control" id="exampleInputPassword1" placeholder="ProductColorCode" value.bind="editCampaignGift.ProductColorCode"></div><button type="submit" class="btn btn-primary">Lưu</button> <button class="btn btn-warning" click.delegate="dialogController.cancel()" style="height:40px;width:60px">Thoát</button></form></ai-dialog-body><ai-dialog-footer></ai-dialog-footer></ai-dialog></template>

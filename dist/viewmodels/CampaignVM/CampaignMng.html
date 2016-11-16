@@ -1,0 +1,21 @@
+<template><style>.dl-horizontal dt {
+    float: left;
+    width: 144px;
+    overflow: hidden;
+    clear: left;
+    text-align: justify;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    margin-left: 60px;
+}
+
+
+		label {
+			padding: 0px 8px
+		}
+        .sweet-alert button.cancel{
+           background:red
+        }
+        .sweet-alert button.cancel:hover {
+    background-color: red;
+}</style><section><h2>Quản lýCampaign</h2><div class="row"><div class="panel-body"><form role="form" class="form-inline" role="form"><div class="form-group"><label for="text">Tiêu đề</label><input type="text" class="form-control" value.bind="filter.Title" placeholder="Tiêu đề"></div><div class="form-group"><label for="pwd">Kiểu</label><select name="" id="" value.bind="filter.Type" class="form-control"><option value="">--Chọn loại--</option><option repeat.for="type of CampaignTypes" value.bind="Value">${type.Text}</option></select></div><div class="form-group"><label for="pwd">Nhóm</label><select name="" id="" value.bind="filter.Group" class="form-control"><option value="">--Chọn nhóm--</option><option repeat.for="group of CampaignGroups" value.bind="group.Value">${group.Text}</option></select></div></form></div><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><button bts_tooltip title="Tạo mới" type="button" class="btn btn-success" click.delegate="create()"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span></button></div></div><br><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><div class="panel panel-default"><div class="panel-body"><table class="table table-hover"><thead><tr><th>#</th><th>Tiêu đề</th><th>Ngày bắt đầu</th><th>Ngày kết thúc</th><th>Trạng thái</th><th>Nhóm</th><th>Kiểu</th><th>Hoạt động</th></tr></thead><tbody ref="myData" items.bind="Campaigns | filter : { Title: filter.Title, Group : filter.Group, Type : filter.Type}"><tr repeat.for="cp of myData.items | takeFromTo: (current-1)* (itemperpage):current * (itemperpage)"><td># ${cp.Id}</td><td>${cp.Title}</td><td>${cp.StartTime}</td><td>${cp.EndTime}</td><td>${cp.Status}</td><td>${cp.Group}</td><td>${cp.Type}</td><td><div class="row"><!--<button type="button" class="btn btn-default " click.delegate="$parent.showConfiguration(cp)">Cấu hình</button>--> <button bts_tooltip title="Cập nhật" type="button" class="btn btn-default" click.delegate="$parent.updateCampaign(cp)"><span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span></button> <button bts_tooltip title="Cấu hình số lượng" class="btn btn-default" click.delegate="$parent.quantumConfig(cp)">Quantum <span class="glyphicon glyphicon glyphicon-cog" aria-hidden="true"></span></button> <button bts_tooltip title="Cấu hình hành động" class="btn btn-default" click.delegate="$parent.ActionInCampaign(cp)">Hoạt động <span class="glyphicon glyphicon glyphicon-cog" aria-hidden="true"></span></button> <button bts_tooltip title="Xem chi tiết" type="button" class="btn btn-default" click.delegate="$parent.detailCampign(cp)"><span class="fa fa-eye" aria-hidden="true"></span></button> <button bts_tooltip title="Xem lịch sử" type="button" class="btn btn-default" click.delegate="$parent.historyToCampign(cp)">Lịch sử <i class="fa fa-eye"></i></button> <button bts_tooltip title="Xóa" class="btn btn-default" click.delegate="$parent.deleteCampign(cp)"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></button></div></td></tbody></table><pagination page-size.bind="pagesize" total.bind="myData.items.length" item-per-page.bind="itemperpage" current-page.bind="current"></pagination></div></div></div></div></section></template>

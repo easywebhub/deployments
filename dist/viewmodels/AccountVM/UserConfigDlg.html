@@ -1,0 +1,82 @@
+<template><style>/*fix z index*/
+    
+    .sweet-alert {
+      z-index: 200111;
+    }
+    
+    body > span.select2-container  {
+      z-index: 100111;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+      z-index: 9998 !important;
+    }
+    
+    .edit-form {}
+    
+    ai-dialog-container {
+      margin: 30px auto;
+      z-index: 100005 !important;
+    }
+    
+    ai-dialog,
+    ai-dialog-container>div>div {
+      max-width: 800px;
+      min-width: 600px;
+      
+      height: auto;
+      margin: auto;
+      display: block;
+    }
+    
+    ai-dialog>ai-dialog-header {
+      padding: 11px 16px 4px;
+    }
+    
+    ai-dialog>ai-dialog-header>button {
+      display: inline-block;
+      float: none;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+    }
+    .lstdoi{
+    margin-bottom: 20px;
+    }
+    .noidung-lsthaydoi{
+   
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    max-height: 150px;
+    overflow: scroll;
+    overflow-x: hidden;
+    min-height: 30px;
+    }
+
+    #style-1::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #000;
+  	border-radius: 10px;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}</style><ai-dialog class="edit-form" data-backdrop="static"><ai-dialog-header><span click.delegate="backToUser()">Quản lý thành viên</span></ai-dialog-header><ai-dialog-body><form class="form" role="form" submit.delegate="updateLoad()"><div class="form-group"><label for="exampleInputEmail1">Họ tên</label><input type="text" class="form-control" id="exampleInputEmail1" placeholder="Họ tên" value.bind="User.FullName & validate"></div><div class="form-group"><label for="exampleInputPassword1">Tài khoản</label><input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tài khoản" value.bind="User.UserName" disabled="disabled"></div><div class="form-group"><label for="exampleInputPassword1">Email</label><input type="text" class="form-control" id="exampleInputPassword1" placeholder="Email" value.bind="User.Email & validate"></div><div class="form-group"><label for="exampleInputFile">Điện thoại</label><input type="text" class="form-control" id="exampleInputPassword1" placeholder="Điện thoại" value.bind="User.PhoneNumber & validate"></div><div class="form-group"><label for="exampleInputFile">CMND</label><input type="text" class="form-control" id="exampleInputPassword1" placeholder="Chứng minh nhân dân" value.bind="User.PersonalId"></div><div class="form-group"><label for="exampleInputPassword1">Trạng thái</label><select value.bind="User.Status & validate" style="width:100%;border: 1px solid #ccc;height:34px;
+    border-radius: 4px;t"><option value="NotActiveYet">NotActiveYet</option><option value="HasOrder">HasOrder</option><option value="Active">Active</option><option value="Lock">Lock</option><option value="Deleted">Deleted</option></select></div><div class="form-group"><label for="exampleInputPassword1">Giới tính</label><select value.bind="User.Sex & validate" style="width:100%;border: 1px solid #ccc;height:34px;
+    border-radius: 4px"><option value="">Chọn giới tính</option><option value="male">male</option><option value="female">female</option></select></div><div class="form-group"><label for="">Quyền</label><select id="select2Dlg" select2 name="" value.bind="User.Roles" multiple="multiple" class="form-control" style="width:100%"><option repeat.for="s of roles" value.bind="s.RoleId" model.bind="s.RoleId">${s.Name}</option></select></div><div class="form-group"><label for="exampleInputEmail1">Bình luận của nhân viên</label><input type="text" class="form-control" id="exampleInputEmail1" placeholder="Bình luận của nhân viên" value.bind="User.NewComment & validate"></div><div class="lstdoi"><h4>Lịch sử thay đổi</h4><div id="style-1" class="noidung-lsthaydoi scrollbar" innerhtml.bind="User.Comment"></div></div><div class="form-group"><label for=""></label><button type="submit" class="btn btn-primary" style="height:40px;width:60px">Lưu</button> <button class="btn btn-warning" click.delegate="dialogController.cancel()" style="height:40px;width:60px">Thoát</button></div></form></ai-dialog-body><ai-dialog-footer></ai-dialog-footer></ai-dialog></template>

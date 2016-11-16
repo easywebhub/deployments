@@ -1,0 +1,42 @@
+<template><style>/*fix z index*/
+     .sweet-alert {
+      z-index: 200111;
+    }
+    
+    body > span.select2-container  {
+      z-index: 100111;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+      z-index: 9998 !important;
+    }
+    
+    .edit-form {}
+    
+    ai-dialog-container {
+      margin: 30px auto;
+      z-index: 100005 !important;
+    }
+    
+    ai-dialog,
+    ai-dialog-container>div>div {
+      min-width: 600px;
+      margin: auto;
+      display: block;
+    }
+    
+    ai-dialog>ai-dialog-header {
+      padding: 11px 16px 4px;
+    }
+    
+    ai-dialog>ai-dialog-header>button {
+      display: inline-block;
+      float: none;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+    }</style><ai-dialog class="edit-form" data-backdrop="static"><ai-dialog-header><h4>Bạn muốn xóa nhóm hoạt động này không?</h4><h5>Thông tin nhóm hoạt động</h5></ai-dialog-header><ai-dialog-body><dl class="dl-horizontal"><dt>Tên</dt><dd>${deleteAction.Name}</dd><dt>Tiêu đề</dt><dd>${deleteAction.Title}</dd><dt>Mô tả</dt><dd>${deleteAction.Description}</dd><dt>Riêng tư</dt><dd><input type="checkbox" value.bind="deleteAction.IsPrivate" disabled="disabled"></dd></dl></ai-dialog-body><ai-dialog-footer><button class="btn btn-danger" click.delegate="delete(deleteAction)" style="height:40px;width:60px">Xóa</button> <button class="btn btn-warning" click.delegate="dialogController.cancel()" style="height:40px;width:60px">Thoát</button></ai-dialog-footer></ai-dialog></template>

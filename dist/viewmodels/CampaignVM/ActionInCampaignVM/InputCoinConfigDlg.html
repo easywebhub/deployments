@@ -1,0 +1,41 @@
+<template><style>.sweet-alert {
+      z-index: 200111;
+    }
+    
+    body> span.select2-container {
+      z-index: 100111;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+      z-index: 9998 !important;
+    }
+    
+    .edit-form {}
+    
+    ai-dialog-container {
+      margin: 30px auto;
+      z-index: 100005 !important;
+    }
+    
+    ai-dialog,
+    ai-dialog-container>div>div {
+      min-width: 600px;
+      margin: auto;
+      display: block;
+    }
+    
+    ai-dialog>ai-dialog-header {
+      padding: 11px 16px 4px;
+    }
+    
+    ai-dialog>ai-dialog-header>button {
+      display: inline-block;
+      float: none;
+    }
+    
+    ai-dialog-overlay.active {
+      background-color: black;
+      opacity: .5;
+    }</style><ai-dialog class="edit-form" data-backdrop="static"><ai-dialog-header><h2>Cấu hình Action input coin</h2></ai-dialog-header><ai-dialog-body><form class="form-horizontal"><div class="form-group"><label class="control-label col-sm-2" for="email">Trạng thái${actionConfig[0].Enable}</label><div class="col-sm-1"><input type="checkbox" checked.bind="actionConfig[0].Enable" class="form-control"></div><div class="col-sm-9"></div></div><div class="form-group"><label class="control-label col-sm-2" for="pwd">${actionConfig[0].CoinName}</label><div class="col-sm-10"><input type="text" class="form-control" disabled.bind="!actionConfig[0].Enable" disabled="disabled" value.bind="actionConfig[0].Value" required></div></div><div class="form-group"><label class="control-label col-sm-2" for="email">Trạng thái</label><div class="col-sm-1"><input type="checkbox" checked.bind="actionConfig[1].Enable" class="form-control"></div><div class="col-sm-9"></div></div><div class="form-group"><label class="control-label col-sm-2" for="pwd">${actionConfig[1].CoinName}</label><div class="col-sm-10"><input type="text" class="form-control" disabled.bind="!actionConfig[1].Enable" disabled="disabled" value.bind="actionConfig[1].Value" required></div></div><div class="form-group"><label class="control-label col-sm-2" for="email">Trạng thái</label><div class="col-sm-1"><input type="checkbox" checked.bind="actionConfig[2].Enable" class="form-control"></div><div class="col-sm-9"></div></div><div class="form-group"><label class="control-label col-sm-2" for="pwd">${actionConfig[2].CoinName}</label><div class="col-sm-10"><input type="text" class="form-control" disabled.bind="!actionConfig[2].Enable" disabled="disabled" value.bind="actionConfig[2].Value" required></div></div><div class="form-group"><div class="col-sm-offset-2 col-sm-10"><button click.delegate="inputCoinConfigDlg(actionConfig)" class="btn btn-primary">Lưu</button> <button click.delegate="dialogController.cancel()" class="btn btn-warning">Thoát</button></div></div></form></ai-dialog-body><ai-dialog-footer></ai-dialog-footer></ai-dialog></template>

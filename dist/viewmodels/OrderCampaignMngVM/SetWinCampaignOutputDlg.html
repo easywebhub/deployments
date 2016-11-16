@@ -1,0 +1,25 @@
+<template><style>ai-dialog-overlay.active {
+        background-color: black;
+        opacity: .5;
+        z-index: 9998;
+    }    
+    .edit-form {}
+    
+    ai-dialog-container {
+        margin: 30px auto;
+        z-index: 9999 ;
+    }
+    
+    ai-dialog>ai-dialog-header {
+        padding: 11px 16px 4px;
+    }
+    
+    ai-dialog>ai-dialog-header>button {
+        display: inline-block;
+        float: none;
+    }
+    
+    /*ai-dialog {
+        max-width: 800px;
+        width: 100%;
+    }*/</style><div class="container"><ai-dialog class="edit-form" id="myModal"><ai-dialog-header><h3>Thiết lập trúng quà</h3></ai-dialog-header><ai-dialog-body><form role="form" submit.delegate="controller.ok(checkedCampaignGift)"><legend>Chọn quà</legend><div class="form-group"><div class="checkbox checkbox-primary" repeat.for="cpg of CampaignGifts"><label><input type="checkbox" model.bind="cpg.Id" checked.bind="$parent.checkedCampaignGift"> ${cpg.Name}</label></div></div><button type="submit" class="btn btn-primary btn-xs">Xác nhận</button> <button type="reset" class="btn btn-warning btn-xs" click.delegate="controller.cancel()">Hủy</button></form></ai-dialog-body><ai-dialog-footer></ai-dialog-footer></ai-dialog></div></template>
