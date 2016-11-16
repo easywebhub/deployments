@@ -16,8 +16,8 @@ define(["require", "exports", 'aurelia-dialog', 'aurelia-dependency-injection'],
             this.Account = [];
         }
         DetailWebDlg.prototype.activate = function (params) {
-            this.Web = params.Accounts;
-            console.log('params', JSON.stringify(params.Accounts));
+            this.Web = params;
+            console.log('params', JSON.stringify(params));
         };
         DetailWebDlg = __decorate([
             aurelia_dependency_injection_1.inject(aurelia_dialog_1.DialogController), 
