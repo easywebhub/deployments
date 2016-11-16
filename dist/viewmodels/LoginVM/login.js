@@ -38,7 +38,14 @@ define(["require", "exports", 'aurelia-router', 'aurelia-dependency-injection', 
                 on: 'blur'
             });
             tinymce.init({
-                selector: "#mytextarea"
+                selector: 'textarea',
+                plugins: [
+                    'paste',
+                    'link',
+                    'autoresize',
+                    'imagetools',
+                    'table'
+                ]
             });
         };
         LoginViewModel.prototype.routeRegister = function () {
