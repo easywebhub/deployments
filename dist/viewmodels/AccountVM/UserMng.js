@@ -32,6 +32,12 @@ define(["require", "exports", 'aurelia-framework', '../../services/Account/UserS
                 }
             });
         };
+        UserMng.prototype.updateUser = function (item) {
+            console.log('updateUser');
+        };
+        UserMng.prototype.deleteUser = function (item) {
+            console.log('delete user');
+        };
         UserMng = __decorate([
             aurelia_framework_1.inject(UserServices_1.UserServices, aurelia_framework_1.BindingEngine), 
             __metadata('design:paramtypes', [Object, Object])
