@@ -15,8 +15,7 @@ System.config({
     "magnificPopup": "bower_components/magnific-popup/dist/jquery.magnific-popup.min.js",
     "semantic": "bower_components/semantic/dist/semantic.min.js",
     "chart.js": "bower_components/chart.js/dist/chart.min.js",
-    "semantic-ui-calendar": "bower_components/semantic-ui-calendar/dist/calendar.js",
-    "tinymce": "bower_components/tinymce/tinymce.min.js"
+    "semantic-ui-calendar": "bower_components/semantic-ui-calendar/dist/calendar.js"
   },
   meta: {
     "bootstrap": {
@@ -405,10 +404,10 @@ System.config({
       "resources/CustomAttributes/manific-popup.js",
       "resources/CustomAttributes/number-box.js",
       "resources/CustomAttributes/select2.js",
-      "resources/CustomAttributes/seman-calendar.js",
       "resources/CustomAttributes/semantic-accordion.js",
       "resources/CustomAttributes/semantic-checkbox.js",
       "resources/CustomAttributes/semantic-dropdown.js",
+      "resources/CustomAttributes/semantic-menu.js",
       "resources/CustomAttributes/semantic-modal.js",
       "resources/CustomAttributes/semantic-rating.js",
       "resources/CustomAttributes/semantic-search.js",
@@ -455,7 +454,6 @@ System.config({
       "viewmodels/LoginVM/logout.html!github:systemjs/plugin-text@0.0.8.js",
       "viewmodels/LoginVM/logout.js",
       "viewmodels/LoginVM/resgister.html!github:systemjs/plugin-text@0.0.8.js",
-      "viewmodels/LoginVM/resgister.js",
       "viewmodels/WebSiteVM/CreateWebDlg.html!github:systemjs/plugin-text@0.0.8.js",
       "viewmodels/WebSiteVM/CreateWebDlg.js",
       "viewmodels/WebSiteVM/DetailWebDlg.html!github:systemjs/plugin-text@0.0.8.js",
@@ -512,10 +510,6 @@ System.config({
       "aurelia-framework",
       "select2"
     ],
-    "resources/CustomAttributes/seman-calendar.js": [
-      "aurelia-framework",
-      "semantic-ui-calendar"
-    ],
     "resources/CustomAttributes/semantic-accordion.js": [
       "aurelia-framework",
       "jquery"
@@ -525,6 +519,10 @@ System.config({
       "jquery"
     ],
     "resources/CustomAttributes/semantic-dropdown.js": [
+      "aurelia-framework",
+      "jquery"
+    ],
+    "resources/CustomAttributes/semantic-menu.js": [
       "aurelia-framework",
       "jquery"
     ],
@@ -605,17 +603,11 @@ System.config({
       "aurelia-router",
       "aurelia-dependency-injection",
       "../../services/Account/LoggingServices",
-      "lockr",
-      "tinymce"
+      "lockr"
     ],
     "viewmodels/LoginVM/logout.js": [
       "aurelia-framework",
       "aurelia-router"
-    ],
-    "viewmodels/LoginVM/resgister.js": [
-      "aurelia-router",
-      "aurelia-dependency-injection",
-      "../../services/Account/LoggingServices"
     ],
     "viewmodels/WebSiteVM/CreateWebDlg.js": [
       "aurelia-dialog",

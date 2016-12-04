@@ -7,10 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", 'aurelia-router', 'aurelia-dependency-injection', '../../services/Account/LoggingServices', 'lockr', 'tinymce'], function (require, exports, aurelia_router_1, aurelia_dependency_injection_1, LoggingServices_1, Lockr) {
+define(["require", "exports", 'aurelia-router', 'aurelia-dependency-injection', '../../services/Account/LoggingServices', 'lockr'], function (require, exports, aurelia_router_1, aurelia_dependency_injection_1, LoggingServices_1, Lockr) {
     "use strict";
     var LoginViewModel = (function () {
         function LoginViewModel(router, loggingServices) {
+            this.pendding = true;
             {
                 this.theRouter = router;
                 this.loggingServices = loggingServices;
@@ -33,19 +34,10 @@ define(["require", "exports", 'aurelia-router', 'aurelia-dependency-injection', 
                         }]
                 },
             };
-            $(".ui.form").form(rules, {
+            $(".ui.form").form({ fields: rules,
                 inline: true,
-                on: 'blur'
-            });
-            tinymce.init({
-                selector: 'textarea',
-                plugins: [
-                    'paste',
-                    'link',
-                    'autoresize',
-                    'imagetools',
-                    'table'
-                ]
+                on: 'blur',
+                onSuccess: this.submit
             });
         };
         LoginViewModel.prototype.routeRegister = function () {
@@ -53,9 +45,11 @@ define(["require", "exports", 'aurelia-router', 'aurelia-dependency-injection', 
         };
         LoginViewModel.prototype.submit = function () {
             var _this = this;
-            return Promise.all([this.loggingServices.CheckLogin(this.Login)]).then(function (rs) {
-                if (rs[0].Result == true) {
-                    Lockr.set('UserInfo', rs[0]);
+            this.pendding = !this.pendding;
+            this.loggingServices.CheckLogin(this.Login).then(function (rs) {
+                if (rs.Result == true) {
+                    _this.pendding = !_this.pendding;
+                    Lockr.set('UserInfo', rs);
                     window.setTimeout(function () {
                         _this.theRouter.navigateToRoute('Dashboard');
                         location.reload();
@@ -63,6 +57,7 @@ define(["require", "exports", 'aurelia-router', 'aurelia-dependency-injection', 
                     swal({ title: "Thông báo", text: "Đăng nhập thành công", timer: 2500, showConfirmButton: true, type: "success" });
                 }
                 else {
+                    _this.pendding = !_this.pendding;
                     swal({ title: "Thông báo", text: "Đăng nhập thất bại", timer: 2500, showConfirmButton: true, type: "warning" });
                 }
             });

@@ -11,6 +11,7 @@ define(["require", "exports", 'aurelia-framework', '../../services/Account/UserS
     "use strict";
     var UserMng = (function () {
         function UserMng(userServices, bindingEngine) {
+            this.pendding = true;
             this.userServices = userServices;
             this.itemperpage = 10;
             this.pagesize = 6;
@@ -19,11 +20,12 @@ define(["require", "exports", 'aurelia-framework', '../../services/Account/UserS
         }
         UserMng.prototype.activate = function () {
             var _this = this;
-            return Promise.all([this.userServices.GetListUser()]).then(function (rs) {
-                if (rs[0].Result == true) {
-                    _this.listUser = rs[0].Data;
-                    _this.total = rs[0].ItemsCount;
-                    console.log('listUser', rs[0]);
+            this.pendding = !this.pendding;
+            this.userServices.GetListUser().then(function (rs) {
+                if (rs.Result == true) {
+                    _this.pendding = !_this.pendding;
+                    _this.listUser = rs.Data;
+                    _this.total = rs.ItemsCount;
                 }
                 else {
                     console.log('bad');

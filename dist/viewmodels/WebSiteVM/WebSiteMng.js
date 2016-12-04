@@ -17,14 +17,17 @@ define(["require", "exports", 'aurelia-framework', '../../services/WebSite/WebSi
             this.current = 1;
             this.total = 0;
             this.dialogService = dialogService;
+            this.pendding = true;
         }
         WebSiteMng.prototype.activate = function () {
             var _this = this;
-            return Promise.all([this.webSiteServices.GetListWebSite()]).then(function (rs) {
-                if (rs[0].Result == true) {
-                    _this.listWebSite = rs[0].Data;
-                    _this.total = rs[0].ItemsCount;
-                    console.log('listWebSite', rs[0].Data);
+            this.pendding = !this.pendding;
+            console.log('show', this.pendding);
+            this.webSiteServices.GetListWebSite().then(function (rs) {
+                if (rs.Result == true) {
+                    _this.pendding = !_this.pendding;
+                    _this.listWebSite = rs.Data;
+                    _this.total = rs.ItemsCount;
                 }
                 else {
                     console.log('bad');
