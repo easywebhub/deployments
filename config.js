@@ -449,7 +449,7 @@ System.config({
       "viewmodels/AccountVM/UserMng.js",
       "viewmodels/DashBoardVM/dash_board.html!github:systemjs/plugin-text@0.0.8.js",
       "viewmodels/DashBoardVM/dash_board.js",
-      "viewmodels/LoginVM/login.html!github:systemjs/plugin-text@0.0.8.js",
+      "viewmodels/DashBoardVM/login.html!github:systemjs/plugin-text@0.0.8.js",
       "viewmodels/LoginVM/login.js",
       "viewmodels/LoginVM/logout.html!github:systemjs/plugin-text@0.0.8.js",
       "viewmodels/LoginVM/logout.js",
